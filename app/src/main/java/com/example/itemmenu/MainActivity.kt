@@ -10,7 +10,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.example.itemmenu.databinding.ActivityMainBinding
+import android.view.LayoutInflater
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,11 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.content_main)
-        setSupportActionBar(binding.toolbar)
+        setContentView(R.layout.activity_main);
 
+        setSupportActionBar(binding.toolbar)
+        val spinner: Spinner = findViewById(R.id.spinnercourses)
         val dm = datamanager()
         val adaptercouses = ArrayAdapter<Courseinfo>(this,
 
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             dm.corses.values.toList())
         adaptercouses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-
+       spinner.adapter=adaptercouses
 
     }
 
