@@ -2,7 +2,9 @@ package com.example.itemmenu
 class datamanager {
     val corses = hashMapOf<String, Courseinfo>()
     val notes = ArrayList<NoteInfo>()
-
+init {
+    initializecourses()
+}
 
     fun initializecourses() {
         var course = Courseinfo("android_intents","Android progrsming with intents")
