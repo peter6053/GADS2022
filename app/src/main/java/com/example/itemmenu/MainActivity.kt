@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -89,4 +90,22 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    override fun onPause() {
+        super.onPause()
+        savenote()
+    }
+
+    private fun savenote() {
+        val dm = datamanager()
+        val note = dm.notes[noteposition]
+        val textnote: TextView = findViewById(R.id.editTextTextMultiLine)
+        val textnote2: TextView = findViewById(R.id.editTextTextMultiLine2)
+        val spinner: Spinner = findViewById(R.id.spinnercourses)
+       textnote.text.toString()
+        textnote2.text.toString()
+note.course = spinner.selectedItem as String
+
+    }
+
 }
