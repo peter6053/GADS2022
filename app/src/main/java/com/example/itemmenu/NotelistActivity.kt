@@ -32,15 +32,23 @@ class NotelistActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
-           val activityIntent = Intent(this,MainActivity::class.java)
+            val activityIntent = Intent(this, MainActivity::class.java)
             startActivity(activityIntent)
         }
-        list_item.adapter = ArrayAdapter(this,
-        android.R.layout.simple_list_item_1,
+        list_item.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
             dm.notes
 
         )
 
+        list_item.setOnItemClickListener { parent, view, position, id ->
+
+            val activityIntent = Intent(this, MainActivity::class.java)
+            activityIntent.putExtra(Extar_note_positin,position)
+            startActivity(activityIntent)
+
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

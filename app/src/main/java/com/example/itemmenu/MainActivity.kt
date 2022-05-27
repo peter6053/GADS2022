@@ -13,10 +13,11 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.itemmenu.databinding.ActivityMainBinding
 import android.view.LayoutInflater
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
-
+    private var noteposition = position_not_set
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -28,13 +29,33 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         val spinner: Spinner = findViewById(R.id.spinnercourses)
         val dm = datamanager()
-        val adaptercouses = ArrayAdapter<Courseinfo>(this,
+        val adaptercouses = ArrayAdapter<Courseinfo>(
+            this,
 
             android.R.layout.simple_spinner_item,
-            dm.corses.values.toList())
+            dm.corses.values.toList()
+        )
         adaptercouses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-       spinner.adapter=adaptercouses
+        spinner.adapter = adaptercouses
+
+        noteposition = intent.getIntExtra(Extar_note_positin, position_not_set)
+        if (noteposition != position_not_set)
+            displayNote()
+
+    }
+
+    private fun displayNote() {
+        val dm = datamanager()
+        val textnote: TextView = findViewById(R.id.editTextTextMultiLine)
+        val textnote2: TextView = findViewById(R.id.editTextTextMultiLine2)
+        val note = dm.notes[noteposition]
+        textnote.setText(note.tittle)
+        textnote2.setText(note.text)
+        val spinner: Spinner = findViewById(R.id.spinnercourses)
+
+        //val courseposition = dm.corses.values.indexOf(note.course)
+        // spinner.setSelection(courseposition)
 
     }
 
