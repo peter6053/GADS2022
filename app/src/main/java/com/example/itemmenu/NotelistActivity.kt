@@ -1,6 +1,10 @@
 package com.example.itemmenu
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Spinner
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -19,17 +23,24 @@ class NotelistActivity : AppCompatActivity() {
 
         binding = ActivityNotelistBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //setContentView(R.layout.activity_notelist);
         setSupportActionBar(binding.toolbar)
-
+        val list_item: ListView = findViewById(R.id.list_item)
         val navController = findNavController(R.id.nav_host_fragment_content_notelist)
+        val dm = datamanager()
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+           val activityIntent = Intent(this,MainActivity::class.java)
+            startActivity(activityIntent)
         }
+        list_item.adapter = ArrayAdapter(this,
+        android.R.layout.simple_list_item_1,
+            dm.notes
+
+        )
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

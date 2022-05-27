@@ -6,6 +6,7 @@ class datamanager {
 
     init {
         initializecourses()
+        initializenotes()
     }
 
     fun initializecourses() {
@@ -21,6 +22,19 @@ class datamanager {
 
         course = Courseinfo(courseId = "Java_core", title = "java fundamental the core platform")
         corses.set(course.courseId, course)
+    }
+    fun initializenotes() {
+        var note = NoteInfo("android intents","andro=id intents","andrid intents")
+        notes.add(note)
+
+        note = NoteInfo("android intents","andro=id intents","andrid intents")
+        notes.add(note)
+
+        note = NoteInfo("android intents","andro=id intents","andrid intents")
+        notes.add(note)
+
+        note = NoteInfo("android intents","andro=id intents","andrid intents")
+        notes.add(note)
     }
 
 }
