@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         noteposition = intent.getIntExtra(Extar_note_positin, position_not_set)
         if (noteposition != position_not_set)
             displayNote()
+        else
+            dm.notes.add(NoteInfo)
+        noteposition = dm.notes.lastIndex
 
     }
 
